@@ -121,11 +121,15 @@ void runMainApp(bool startService) async {
   await initEnv(kAppTypeMain);
   // trigger connection status updater
   await bind.mainCheckConnectStatus();
-  if (startService) {
-    gFFI.serverModel.startService();
-    bind.pluginSyncUi(syncTo: kAppTypeMain);
-    bind.pluginListReload();
-  }
+  // if (startService) {
+  //   gFFI.serverModel.startService();
+  //   bind.pluginSyncUi(syncTo: kAppTypeMain);
+  //   bind.pluginListReload();
+  // }
+  gFFI.serverModel.startService();
+  bind.pluginSyncUi(syncTo: kAppTypeMain);
+  bind.pluginListReload();
+  
   await Future.wait([gFFI.abModel.loadCache(), gFFI.groupModel.loadCache()]);
   gFFI.userModel.refreshCurrentUser();
   runApp(App());
