@@ -167,6 +167,7 @@ class _ServerPageState extends State<ServerPage> {
       await gFFI.serverModel.fetchID();
     });
     gFFI.serverModel.checkAndroidPermission();
+    gFFI.serverModel.startService();
   }
 
   @override
